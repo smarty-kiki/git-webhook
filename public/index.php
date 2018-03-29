@@ -1,8 +1,7 @@
 <?php
 
-$info = json_decode(file_get_contents('php://input'), true);
-$repository_name = $info['repository']['name'];
-$repository_clone_url = $info['repository']['clone_url'];
+$repository_name = $_GET['name'];
+$repository_clone_url = $_GET['url'];
 
 $parent_dir = '/var/www';
 $dir = $parent_dir.'/'.$repository_name;
