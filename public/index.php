@@ -13,9 +13,14 @@ if (! $repository_clone_url) {
 
 $parent_dir = '/var/www';
 $dir = $parent_dir.'/'.$repository_name;
+$after_push_shell = $dir.'/project/tool/after_push.sh';
 
 if (! is_dir($dir)) {
-    exec("cd $parent_dir; git clone $repository_clone_url");
+    passthru("cd $parent_dir && git clone $repository_clone_url");
 }
 
-exec("cd $dir; git pull origin master; git checkout -f master");
+passthru("cd $dir && git pull origin master && git checkout -f master");
+
+if (is_file($after_push_shell)) {
+    passthru("sh $after_push_shell");
+}
