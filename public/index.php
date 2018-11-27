@@ -22,5 +22,5 @@ if (! is_dir($dir)) {
 passthru("cd $dir && git pull origin master && git checkout -f master");
 
 if (is_file($after_push_shell)) {
-    passthru("sh $after_push_shell");
+    passthru("/bin/bash $after_push_shell");
 }
