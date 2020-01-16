@@ -13,7 +13,7 @@ if (! $repository_clone_url) {
 
 $parent_dir = '/var/www';
 $dir = $parent_dir.'/'.$repository_name;
-$after_push_shell = $dir.'/project/tool/after_push.sh';
+$after_push_shell = $dir.'/project/tool/production/after_push.sh';
 
 if (! is_dir($dir)) {
     passthru("cd $parent_dir && git clone $repository_clone_url");
